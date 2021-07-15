@@ -1,0 +1,26 @@
+﻿<Window x:Class="ContactApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContactApp"
+        xmlns:viewModels="clr-namespace:ContactApp.ViewModels"
+        xmlns:views="clr-namespace:ContactApp.Views"
+        mc:Ignorable="d"
+        Title="ContactApp" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:ContactListViewModel}">
+            <views:ContactListView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModels:AddEditContactViewModel}">
+            <views:AddEditContactView/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <ContentPresenter Grid.Row="1" Content="{Binding CurrentViewModel}"/>
+</Window>
